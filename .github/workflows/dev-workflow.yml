@@ -23,7 +23,7 @@ jobs:
             - name: AWS access using OIDC
               uses: aws-actions/configure-aws-credentials@v4
               with:
-                role-to-assume: arn:aws:iam:: {{ secrets.IAM_ROLE}}
+                role-to-assume: arn:aws:iam::102885960832:role/github-oidc-vcube
                 role-session-name: github-actions
                 aws-region: us-east-1
             - name: Terraform init
@@ -49,12 +49,10 @@ jobs:
             - name: AWS access using OIDC
               uses: aws-actions/configure-aws-credentials@v4
               with:
-                role-to-assume: arn:aws:iam:: {{ secrets.IAM_ROLE}}
+                role-to-assume: arn:aws:iam::102885960832:role/github-oidc-vcube
                 role-session-name: github-actions
                 aws-region: us-east-1
             - name: Terraform init
               run: terraform init
             - name: Terraform Apply
               run: terraform apply -auto-approve -var-file=dev.tfvars
-
-
